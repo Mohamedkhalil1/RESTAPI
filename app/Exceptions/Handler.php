@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponser;
+use BadMethodCallException;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -9,12 +11,14 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
     /**
      * A list of the exception types that are not reported.
      *
@@ -54,10 +58,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-
         if($exception instanceof ModelNotFoundException){
             $model = strtolower(class_basename($exception->getModel()));
-            return response()->json(['Error' => "Does exist any {$model} with this specified identiticator",'code'=>'404'],404);
+            return $this->errorResponse("Does exist any {$model} with this specified identiticator",404);
         } 
 
         if($exception instanceof AuthenticationException){
@@ -65,36 +68,43 @@ class Handler extends ExceptionHandler
         }
 
         if($exception instanceof AuthorizationException){
-            return response()->json(['error' => $exception->getMessage(),'code' => 409],409);
+            return $this->errorResponse($exception->getMessage(),409);
         }
 
         if($exception instanceof NotFoundHttpException){
-            return response()->json(['error' => 'The Specified Url cannot be found ' ,'code' => 404],404);
+            return $this->errorResponse('The Specified Url cannot be found',404);
         }
 
         if($exception instanceof MethodNotAllowedHttpException){
-            return response()->json(['error' => 'the specified method you for request is invalid','code' => 405],405);
+            return $this->errorResponse('the specified method you for request is invalid',405);
         }
 
         if($exception instanceof ValidationException){
            return $this->convertValidationExceptionToResponse($exception,$request);
         }
+        if($exception instanceof BadRequestHttpException){
+            return $this->errorResponse('Bad request does not exist' ,$exception->getStatusCode());
+        }
+
+        if($exception instanceof BadMethodCallException){
+            return $this->errorResponse('Method request does not exist' ,404);
+        }
 
         if($exception instanceof HttpException){
-            return response()->json(['data' => $exception->getMessage(),'code' => $exception->getStatusCode()],$exception->getStatusCode());
+            return $this->errorResponse($exception->getMessage(),$exception->getStatusCode());
         }
 
         if($exception instanceof QueryException){
             $errorCode = $exception->errorInfo[1];
             if($errorCode === 1451){
-                return response()->json(['error' => 'Cannot remove this resource permanetly . It is related with any other resources','code'=>409],409);
+                return $this->errorResponse('Cannot remove this resource permanetly . It is related with any other resources',409);
             }
         }
 
         if(config('app.debug')){
             return parent::render($request, $exception);
         }
-        return response()->json(['error'=>'unexcepted exception ','code' =>500],500);
+        return $this->errorResponse('unexcepted exception',500);
     }
 
     /**
