@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
       
        
 
-        $userQuantity = 200;
+        $userQuantity = 1000;
         $categoryQuantity=30;
         $productQuantity=1000;
         $transactionQuantity=1000;

@@ -16,6 +16,8 @@ class User extends Authenticatable
     const ADMIN_USER = 'true';
     const REGULAR_USER='false';
 
+    protected $url ="/users";
+
     protected $table = 'users'; 
 
     /**
@@ -50,6 +52,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getUrlAttribute(){
+        return route('users.show',$this->id);
+    }
+
+    public function setNameAttribute($name){
+        $this->attributes['name'] = strtolower($name);
+    }
+
+    public function getNameAttribute(){
+        return ucwords($this->attributes['name']);
+    }
+
+    public function setEmailAttribute($email){
+        $this->attributes['email'] = strtolower($email);
+    }
+
+    public function getEmailAttribute(){
+        return ucwords($this->attributes['email']);
+    }
 
     public function isVerified()
     {

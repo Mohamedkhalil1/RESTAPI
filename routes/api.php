@@ -15,29 +15,29 @@ use Illuminate\Http\Request;
 /**
  * Buyer
 */
-Route::resource('Buyer', 'Buyer/BuyerController',['only' => ['index','show']]);
+Route::resource('buyers', 'Buyer\BuyerController',['only' => ['index','show']]);
 
 /**
  * Seller
 */
-Route::resource('Seller', 'Seller/SellerController',['only' => ['index','show']]);
+Route::resource('sellers', 'Seller\SellerController',['only' => ['index','show']]);
 
 /**
  * Category
 */
-Route::resource('Category', 'Category/CategortyController',['only' => ['create','edit']]);
+Route::resource('categories', 'Category\CategortyController',['except' => ['create','edit']]);
 
 /**
  * Product
 */
-Route::resource('Product', 'Product/ProductController',['only' => ['create','edit']]);
+Route::resource('products', 'Product\ProductController',['except' => ['create','edit']]);
 
 /**
  * Transaction
 */
-Route::resource('Transaction', 'Transaction/TransactionController',['only' => ['index','show']]);
+Route::resource('transactions', 'Transaction\TransactionController',['only' => ['index','show']]);
 
 /**
  * User
 */
-Route::resource('User', 'User/UserController',['only' => ['create','edit']]);
+Route::resource('users', 'User\UserController',['except' => ['create','edit']]);
