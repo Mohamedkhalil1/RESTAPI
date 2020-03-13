@@ -16,7 +16,6 @@ class ProductController extends ApiController
     public function index()
     {
         $Products  = Product::all();
-
         return $this->showAll($Products);
     }
 

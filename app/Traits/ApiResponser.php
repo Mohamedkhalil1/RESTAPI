@@ -22,6 +22,10 @@ trait ApiResponser{
     protected function showOne(Model $model , $code=200){
        return $this->successResponse($model,$code);
     } 
+
+    protected function getMessage($message,$code=200){
+        return $this->successResponse(['message' => $message],$code);
+    }
 }
 
 ?>

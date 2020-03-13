@@ -22,9 +22,13 @@ class Product extends Model
         'seller_id'
     ]; 
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     public function isavailable ()
     {
-        return $this->status = Product::AVAILABLE_PRODUCT;
+        return $this->status === Product::AVAILABLE_PRODUCT;
     }
 
     public function categories()
@@ -38,6 +42,6 @@ class Product extends Model
     }
 
     public function transactions(){
-        return $this->belongsToMany(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 }

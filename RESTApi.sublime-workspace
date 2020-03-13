@@ -11,9 +11,29 @@
 			"file": "app/User.php",
 			"settings":
 			{
-				"buffer_size": 742,
+				"buffer_size": 0,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/ApiController.php",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "app/Traits/ApiResponser.php",
+			"file_size": 0,
+			"file_write_time": 132285080350332631,
+			"settings":
+			{
+				"buffer_size": 0,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -91,10 +111,13 @@
 	[
 		"/E/Eramint/laravel/RESTApi",
 		"/E/Eramint/laravel/RESTApi/app",
-		"/E/Eramint/laravel/RESTApi/app/Http"
+		"/E/Eramint/laravel/RESTApi/app/Http",
+		"/E/Eramint/laravel/RESTApi/app/Http/Controllers"
 	],
 	"file_history":
 	[
+		"/E/Eramint/laravel/RESTApi/app/Traits/ApiResponser.php",
+		"/E/Eramint/laravel/RESTApi/app/Http/Controllers/Traits/ApiResponser.php",
 		"/E/Eramint/laravel/RESTApi/app/Http/Kernel.php",
 		"/C/Users/Khalil/AppData/Roaming/Sublime Text 3/Packages/auto-save/README.md",
 		"/C/Users/Khalil/AppData/Roaming/Sublime Text 3/Packages/User/PHP Companion.sublime-settings",
@@ -135,7 +158,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -144,15 +167,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 742,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								284,
-								284
+								0,
+								0
 							]
 						],
 						"settings":
@@ -166,7 +189,75 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 18.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Http/Controllers/ApiController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Traits/ApiResponser.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.19.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -256,7 +347,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 279.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

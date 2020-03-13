@@ -86,10 +86,7 @@ class Handler extends ExceptionHandler
             return $this->errorResponse('Bad request does not exist' ,$exception->getStatusCode());
         }
 
-        if($exception instanceof BadMethodCallException){
-            return $this->errorResponse('Method request does not exist' ,404);
-        }
-
+       
         if($exception instanceof HttpException){
             return $this->errorResponse($exception->getMessage(),$exception->getStatusCode());
         }
@@ -98,6 +95,9 @@ class Handler extends ExceptionHandler
             $errorCode = $exception->errorInfo[1];
             if($errorCode === 1451){
                 return $this->errorResponse('Cannot remove this resource permanetly . It is related with any other resources',409);
+            }
+            else{
+                return $this->errorResponse($exception->getMessage(),500);
             }
         }
 
