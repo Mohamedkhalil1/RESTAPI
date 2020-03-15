@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Scopes\BuyerScope;
+use App\Transformers\BuyTransformer;
 
 class Buyer extends User
 {
@@ -12,6 +13,8 @@ class Buyer extends User
 
         static::addGlobalScope(new BuyerScope);
     }
+
+    public $transformer = BuyTransformer::class;
     
     public function transactions()
     {

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Transformers\ProductTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -26,6 +27,8 @@ class Product extends Model
         'pivot'
     ];
 
+    public $transformer = ProductTransformer::class;
+    
     public function isavailable ()
     {
         return $this->status === Product::AVAILABLE_PRODUCT;
